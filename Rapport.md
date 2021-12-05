@@ -1,6 +1,9 @@
 # Rapport Projet SSI : Présentation du chiffrement dans ADAMANT Messenger 
+
+## Chapitre 1 : Présentation de l'application Adamant.
+
  
-## Chapitre 1 : Le chiffrement dans l'application Adamant.
+## Chapitre 2 : Le chiffrement dans l'application Adamant.
 
 ### Partie 1 : chiffrement des Comptes
 
