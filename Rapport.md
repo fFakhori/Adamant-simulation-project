@@ -10,8 +10,8 @@
 
 ### Partie 2 : chiffrement des Messages
 
-### Partie 3 : chiffrement de Stockage des valeurs-clés KVS
+### Partie 3 : chiffrement dans le Stockage des valeurs-clés KVS
 
-### Partie 4 : chiffrement de la signature
+### Partie 4 : chiffrement dans la signature des transactions
 
 ## Chapitre 2 : Simulation d'un noeud dans le blockchain.
