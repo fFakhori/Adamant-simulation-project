@@ -132,4 +132,10 @@ Afin de calculer l’ID de transaction, le système prend le bloc de données av
 
 Enfin, une signature de transaction doit être incluse dans l’objet de transaction avant d’être diffusée sur le réseau.
 
+### Diffusion d’une transaction
+Lorsque la transaction est formée et signée, elle peut être diffusée sur le réseau à l’aide du point de terminaison POST.
+
+### EdDSA
+
+
 ## Chapitre 3 : Simulation d'un noeud dans le blockchain.
