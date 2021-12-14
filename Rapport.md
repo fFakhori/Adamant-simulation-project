@@ -58,6 +58,32 @@ La figure suivante donne une vision sur le cycle de vie d'un message dans l'appl
 
 ### Partie 3 : chiffrement dans le Stockage des valeurs-clés KVS
 
+#### 3.1 C'est quoi KVS
+Pour l'enregistrement des informations des contacts sur la blockchain, le mécanisme de Stockage Clé-Valeur (KVS) est créé.
+ 
+KVS est un moyen de stocker des informations. Plus concrètement, le stockage clé-valeur (KVS) d'ADAMANT est un type spécial de transactions pour stocker des données privées (cryptées) ou publiques (valeur simple) dans la blockchain d'ADAMANT. Les exemples sont la liste de contacts pour les données privées et l'adresse Ether pour les données publiques.
+ 
+#### 3.2 Structure de la transaction
+Entre autres types de transactions, les KVS privées sont stockées dans la blockchain. Elles sont valables pour leurs propriétaires seuls, puisque elles sont encryptées avec une clé privée.
+![](./assets/KVS-transaction-example.png)
+ 
+- La clé décrit le contenu de l'enregistrement KVS. Elle est sous forme d'une chaîne et obligatoire.
+- La valeur est la donnée pour la clé. Elle est aussi obligatoire, le type dépend du contenu.
+- Le type indique comment traiter les enregistrements KVS pour cette clé. Il peut s'agir d'une réécriture incrémentielle ou complète des valeurs précédentes. Doit être décrit dans les futurs AIP. Il est un entier, obligatoire. Les transactions KVS sont de type 9.
+ 
+#### 3.3 Algorithmes de cryptage utilisé
+1. En ce qui concerne KVS pour chaque partie de l'information d'utilisateur et la donnée:
+- Clés de signature Ed25519 de l'utilisateur KVS ⟶ Clé secrète XSalsa20-Poly1305
+- Données ⟶ Objet JSON avec «bruit» ajouté.
+ 
+En cryptographie à clé publique, l'algorithme de signature numérique à courbe d'Edwards (EdDA) est un schéma de signature numérique conçu pour être plus rapide que les schémas de signature numérique existants sans sacrifier la sécurité.
+ 
+2. En ce qui concerne la méthode de cryptage:
+- XSalsa20-Poly1305 (NaCl.secretbox) chiffrement de 20 tours avec un nonce 192 bits pour Salsa20 et Poly1305 pour vérifier le l'intégrité des données et l'authenticité d'un message.
+ 
+XSalsa20Poly1305 (alias NaCl crypto_secretbox) est une méthode de chiffrement authentifié qui se prête à des implémentations rapides et constantes dans le logiciel, basé sur le chiffrement de flux Salsa20 (avec l'extension XSalsa20 192 bits nonce) et la fonction de hachage universelle Poly1305, qui agit comme une authentification de message code.
+Cet algorithme a été largement remplacé par les nouveaux chiffrements AEAD ChaCha20Poly1305 (et les XChaCha20Poly1305) associés (RFC 8439), mais il est utile pour l'interopérabilité avec les anciens protocoles basés sur NaCl.
+
 ### Partie 4 :la signature des transactions
 
 #### 4.1 ADAMANT Transaction
